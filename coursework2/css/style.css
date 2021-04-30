@@ -1,0 +1,553 @@
+body{/* These CSS rules have been applied to the whole body, for ease of the basic styling of all pages*/
+  background-color: #333333;
+  color: white;
+  --textSize: 18px;
+  --textSideMargin: 10px; /*To esnure that the text does not get too close to the edge of the images when scaling the screen from mobile to desktop during the questioning pages, a custom property was set and then used where appropraite*/
+  --textTopMargin: 35px;
+  font-family: "Century Gothic";
+  text-align: center;
+  margin: 0;
+  --pageAccents: #A61818; /*Using a custom property here so that if the colour needs to be changed for any reason, it will only need to be changed here to apply to all of the colourful accents throughout the game, like the buttons or the loader.*/
+}
+
+h1{
+  font-family: "AR BONNIE"; /*The font is in quotation marks as a result of warnings in the CSS validation that suggested they be put in quotes*/
+  font-size: 100px;
+  text-align: center;
+  margin: 0;
+}
+
+p{
+margin-top: var(--textTopMargin);
+}
+
+#blood{
+  width: 30px;
+  height: 40px;
+  position: absolute;
+  margin-top: -33.5px; /*lines the drop up with the bottom of the text*/
+  left: 48%; /*Positioned to be well placed no matter the header layout */
+}
+
+#hat{
+  display: block;
+  margin-top: var(--textTopMargin);
+  margin-left: auto; /*centres the image*/
+  margin-right: auto; /*centres the image*/
+  width: 30%;
+  height: 20%;
+}
+
+@keyframes bounce{
+from{
+transform: translateY(0);
+}
+to{
+transform: translateY(20px);
+}
+}
+
+/* Originally, the bounce animation and hover was played using the arrowContainer with the arrow enclosed within it. However, when testing the hover ability to pause the animation, it was realised that the container's size was interferring with how close you had to be to the arrow to cause the hover to kick in and pause the animation. Even setting the container to be small in size did not help, therefore the animation was changed to play directly on the arrow which is actually better overall and provides a much smoother experience. This code has been left to show the development detailed above for the final code.
+.arrowContainer{
+width: 100%;
+height: 100%;
+animation: bounce 0.7s infinite alternate;
+}
+.arrowContainer:hover{
+  animation-play-state: paused;
+} */
+
+.arrow{
+  display: block;
+  margin-left: auto; /*centres the image*/
+  margin-right: auto; /*centres the image*/
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 30%;
+  height: 40%;
+  animation: bounce 0.7s infinite alternate; /*The use of alternate makes the animation run smoothly by alternating the animation direction from forwards to backward in an infinite loop, creating the bouncing animation*/
+}
+
+.arrow:hover{
+  animation-play-state: paused; /*The hover starts marginally before the user is actually on the arrow sometimes. This is due to the arrow image being square, so the hover picks up the edge of the entire image*/
+  cursor: pointer; /*The cursor has been changed to a pointer so that players know that it is an interactive and clickable element on screen*/
+}
+
+#form{
+  font-size: var(--textSize);
+  width: 80%; /* This is the width of the whole section, including the form element, which works with the width of the inputs being 100% of the forms 80%. This is so that the input boxes stay stacked on top of each other no matter how big/small the screen*/
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  }
+
+.inputs{
+  font-size: var(--textSize);
+  width: 100%;
+  margin: 12px;
+  padding: 7px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  #phone{
+    width: 80%;
+    height: 80%;
+  }
+
+#enter{
+  width: 50%;
+  padding: 12px;
+  font-family: "Century Gothic";
+  color: white;
+  font-size: 20px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: var(--pageAccents, red);
+}
+
+#output{
+  display: none;
+    font-size: var(--textSize);
+}
+
+#phoneRings{
+  display: none;
+}
+
+#answerPhone{
+  width: 50%;
+  padding: 12px;
+  font-family: "Century Gothic";
+  color: white;
+  font-size: 20px;
+  background-color: var(--pageAccents, red);
+  margin-top: 8px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+/*#declinePhone{
+  width: 50%;
+  padding: 12px;
+  font-family: "Century Gothic";
+  color: white;
+  font-size: 20px;
+  background-color: var(--pageAccents, red);
+  margin-top: 8px;
+  margin-bottom: 50px;
+  cursor: pointer;
+} As discussed in other areas, this button was removed from the game so that it would function properly.*/
+
+#video{
+  width: 90%;
+  margin-top: 50px;
+}
+
+#characterChoice{
+  font-size: var(--textSize);
+  margin: 8px;
+}
+
+.characters{
+  font-size: var(--textSize);
+  width: 100%;
+  display: flex;
+  flex-direction: column; /*By using a flex box to display the character images, it enabled the use of the column direction to be employed. This stacks the images on top of each other when the game is played on a mobile phone*/
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+#characterChoice{
+  margin-top: var(--textTopMargin);
+}
+
+.charactersQuestioning{
+  width: 35%;
+  height: 45%; /*The height and width have been adjusted so that the character images are not too big on the screen*/
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 18px;
+}
+
+.buttons{
+  background-color: var(--pageAccents, red); /*Just incase the custom property colour cannot be set by the browser, red has been set as a backup colour*/
+  font-size: var(--textSize);
+  cursor: pointer;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+
+#dialogueA2{
+  font-size: var(--textSize);
+  margin-top: 18px;
+  margin-left: var(--textSideMargin); /*As mentioned at the top of the CSS, this is to stop the second part of the questioning dialogue from being too close to the edge of the character image*/
+  margin-right: var(--textSideMargin);
+}
+
+#dialogueC2{
+  font-size: var(--textSize);
+  margin-top: 18px;
+  margin-left: var(--textSideMargin);
+  margin-right: var(--textSideMargin);
+}
+
+#dialogueD2{
+  font-size: var(--textSize);
+  margin-top: 18px;
+  margin-left: var(--textSideMargin);
+  margin-right: var(--textSideMargin);
+}
+
+#correct{
+  font-size: var(--textSize);
+  margin-top: 18px;
+  margin-left: var(--textSideMargin);
+  margin-right: var(--textSideMargin);
+}
+
+.wrongChoice{
+  width: 35%;
+  height: 45%;
+}
+
+.incorrect{
+  font-size: var(--textSize);
+  margin-top: 18px;
+  margin-left: var(--textSideMargin);
+  margin-right: var(--textSideMargin);
+}
+
+footer{
+  position: fixed; /*This makes sure that the footer remains in the same place regardless, so the narration will always be located where users expect it to be*/
+  bottom: 0;
+}
+
+#speaker{
+  display: block;
+  width: 20%;
+  height: 20%;
+  cursor: pointer; /*This lets users know that if they click the speaker icon, something will happen as it is an interatcive element*/
+}
+
+.link{
+  text-decoration: none; /*Removing the underline on the link that applies to text above the characters*/
+  font-size: var(--textSize);
+  color: White;
+  cursor: pointer;
+}
+
+#shareResult{
+  background-color: var(--pageAccents, red);
+  color: white;
+  font-family: "Century Gothic"; /*These style rules were applied as the button does not take on the basic body stylying rules*/
+  font-size: var(--textSize);
+  padding: 15px;
+  cursor: pointer; /* This is so that users on desktop will see their cursor change to the pointer, indicating that the button is clickable*/
+}
+
+.socials{
+  width: 30%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 25px;
+  cursor: pointer;
+}
+
+.retry{
+  background-color: var(--pageAccents, red);
+  color: white;
+  font-family: "Century Gothic";
+  font-size: var(--textSize);
+  padding: 15px; /*These style rules were applied as the button does not take on the basic body stylying rules*/
+  cursor: pointer; /* This is so that users on desktop will see their cursor change to the pointer, indicating that the button is clickable*/
+}
+
+#loader{
+  position: absolute;
+  background-color: var(--pageAccents, red);
+  width: 100%;
+  height: 0; /* Set to 0 so that it does not take up space at the bottom of the page, when it is called, the height is set to 100% to cover the page, creating the transtion*/
+  bottom: -100%; /*This places the red div at the bottom of the screen, so that it animates and slides up the screen using the javascript function transition()*/
+  z-index: 1; /* This positions the red box over the page, hiding any content underneath it*/
+  /*display: none; (So that the div was not visible on the bottom of the page before being called to transition, it was set to none. However, this did not work when told to set to block in the transition() function, as the page would change, but the red box sliding up would not display.)*/
+  transition: 1.5s; /* The transition is 1.5s rather than 1, so that it times perfectly with the page content appearing on screen once the red box has slid all the way up the screen*/
+}
+
+#page1{
+  position: absolute; /*This positioning is used so that the the new pages will be placed above the old ones, as it will be relative to its nearest content*/
+  width: 100%;
+  height: 100%;
+  font-size: var(--textSize);
+}
+
+#page2{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none; /*Set to none so it is not visible until the player reaches that page*/
+  font-size: var(--textSize);
+}
+
+#page3{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+/*#page3Declined{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+} No longer required, but left in so the process can be seen*/
+
+#page4{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+#page5{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+#page6{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+#page7{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+#page8{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+#page9{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+#page10{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+#page11{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+#page12{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  font-size: var(--textSize);
+}
+
+
+@media screen and (min-width: 1000px) {
+  #blood {
+    left:48.5%; /*This repositions the blood to a more central position in relation to the title when on a desktop */
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #hat {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .arrow {
+    width: 15%; /*This has been used to make the arrow shrink in size on the larger desktop screen so that it is of the correct proportions*/
+    height: 15%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .characters {
+    width: calc(100% / 3); /* This calculates the exact width of the images needed to fill the screen without leaving a small gap on one edge*/
+    float: left; /* This floats the images so that they go from being in a column, to being in a row*/
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .characters {
+    width: calc(100% / 3);
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .charactersQuestioning {
+    width: calc(100% / 3);
+    float: left;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .charactersQuestioning {
+    width: calc(80% / 3); /*The width was made smaller here so that as the screen gets bigger, the character images seperate out evenly across the screen with gaps between them */
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .socials {
+    width: calc(100% / 3);
+    float: left;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  #dialogueA2 {
+    margin-top: 9%; /*This moves the text lower down the screen so that it stays more centrally inline with the image that has been floated to the left */
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #dialogueA2 {
+    margin-top: 12%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  #dialogueC2 {
+    margin-top: 9%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #dialogueC2 {
+    margin-top: 12%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  #dialogueD2 {
+    margin-top: 9%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #dialogueD2 {
+    margin-top: 12%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  #correct {
+    margin-top: 10%; /*The images the text is next to here are slightly larger than the one if the player chooses wrongly. Therefore, the margin-top was increased in size when repositioning the text to stay in line with the image to its left. This provides a more choesive design*/
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #correct {
+    margin-top: 15%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .incorrect {
+    margin-top: 8%; /*Repositioning the text to stay in line with the image to its left. This provides a more choesive design*/
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .incorrect {
+    margin-top: 10%;}
+  }
+
+@media screen and (min-width: 650px) {
+  #phone {
+    width: 70%; /*Decreasing the width of the image so that it does not become to large on bigger screens */
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #phone {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  #video {
+    width: 70%; /*SO that the whole video can be seen on screen, it is decreased in size on larger screens as once a user clikcs play, the video gets slightly bigger in size*/
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #video {
+    width: 55%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  #speaker {
+    width: 12%; /*The image of the speaker is made smaller as the screen gets larger, as the original file is much larger than the small and medium versions*/
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #speaker {
+    width: 6%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .wrongChoice {
+    width: 50%;
+    height: 50%;
+    float: left; /*To match the layout and design of the rest of the character pages on larger screens, the question mark image was also floated left, allowing the text and button to move to the right of it*/
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .wrongChoice{
+    width: 40%;
+    height: 40%;
+    float: left;
+  }
+}
