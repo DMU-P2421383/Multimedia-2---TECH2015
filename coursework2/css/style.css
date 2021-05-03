@@ -4,7 +4,7 @@ body{/* These CSS rules have been applied to the whole body, for ease of the bas
   --textSize: 18px;
   --textSideMargin: 10px; /*To ensure that the text does not get too close to the edge of the images when scaling the screen from mobile to desktop during the questioning pages, a custom property was set and then used where appropriate*/
   --textTopMargin: 35px;
-  font-family: "Century Gothic", AppleGothic, sans-serif; /*AppleGothic has been added as an altenrate font for users playing on Mac and IOS devices. This was done after testing revealed the font did not match across all devices*/
+  font-family: "Century Gothic", AppleGothic, sans-serif; /*AppleGothic has been added as an alternate font for users playing on Mac and IOS devices. This was done after testing revealed the font did not match across all devices*/
   text-align: center;
   margin: 0;
   --pageAccents: #A61818; /*Using a custom property here so that if the colour needs to be changed for any reason, it will only need to be changed here to apply to all of the colourful accents throughout the game, like the buttons or the loader.*/
@@ -84,7 +84,7 @@ animation: bounce 0.7s infinite alternate;
   }
 
 .inputs{
-  font-size: var(--textSize); * Using the custom property for ease when setting the font size, meaning everything matches*/
+  font-size: var(--textSize); /* Using the custom property for ease when setting the font size, meaning everything matches*/
   width: 100%;
   margin: 12px;
   padding: 7px;
