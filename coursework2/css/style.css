@@ -2,9 +2,9 @@ body{/* These CSS rules have been applied to the whole body, for ease of the bas
   background-color: #333333;
   color: white;
   --textSize: 18px;
-  --textSideMargin: 10px; /*To esnure that the text does not get too close to the edge of the images when scaling the screen from mobile to desktop during the questioning pages, a custom property was set and then used where appropraite*/
+  --textSideMargin: 10px; /*To ensure that the text does not get too close to the edge of the images when scaling the screen from mobile to desktop during the questioning pages, a custom property was set and then used where appropriate*/
   --textTopMargin: 35px;
-  font-family: "Century Gothic", AppleGothic, sans-serif;
+  font-family: "Century Gothic", AppleGothic, sans-serif; /*AppleGothic has been added as an altenrate font for users playing on Mac and IOS devices. This was done after testing revealed the font did not match across all devices*/
   text-align: center;
   margin: 0;
   --pageAccents: #A61818; /*Using a custom property here so that if the colour needs to be changed for any reason, it will only need to be changed here to apply to all of the colourful accents throughout the game, like the buttons or the loader.*/
@@ -24,7 +24,7 @@ margin-top: var(--textTopMargin);
 #blood{
   width: 30px;
   height: 40px;
-  position: absolute;
+  position: absolute; /*This makes sure that the blood drop would overlay the header if close enough*/
   margin-top: -22px; /*lines the drop up with the bottom of the text*/
   left: 48%; /*Positioned to be well placed no matter the header layout */
 }
@@ -45,7 +45,7 @@ transform: translateY(0);
 to{
 transform: translateY(20px);
 }
-}
+} /*This CSS animation transforms the position of the arrow up and down by 20px*/
 
 /* Originally, the bounce animation and hover was played using the arrowContainer with the arrow enclosed within it. However, when testing the hover ability to pause the animation, it was realised that the container's size was interferring with how close you had to be to the arrow to cause the hover to kick in and pause the animation. Even setting the container to be small in size did not help, therefore the animation was changed to play directly on the arrow which is actually better overall and provides a much smoother experience. This code has been left to show the development detailed above for the final code.
 .arrowContainer{
@@ -58,7 +58,7 @@ animation: bounce 0.7s infinite alternate;
 } */
 
 .arrow{
-  display: block;
+  display: block; /*So that the arrow takes the whole width of the page at this point*/
   margin-left: auto; /*centres the image*/
   margin-right: auto; /*centres the image*/
   margin-top: 10px;
@@ -75,7 +75,7 @@ animation: bounce 0.7s infinite alternate;
 
 #form{
   font-size: var(--textSize);
-  width: 80%; /* This is the width of the whole section, including the form element, which works with the width of the inputs being 100% of the forms 80%. This is so that the input boxes stay stacked on top of each other no matter how big/small the screen*/
+  width: 80%; /* This is the width of the whole div, including the form element, which works with the width of the inputs being 100% of the forms 80%. This is so that the input boxes stay stacked on top of each other no matter how big/small the screen*/
   padding: 10px;
   display: block;
   margin-left: auto;
@@ -84,7 +84,7 @@ animation: bounce 0.7s infinite alternate;
   }
 
 .inputs{
-  font-size: var(--textSize);
+  font-size: var(--textSize); * Using the custom property for ease when setting the font size, meaning everything matches*/
   width: 100%;
   margin: 12px;
   padding: 7px;
@@ -110,11 +110,11 @@ animation: bounce 0.7s infinite alternate;
 
 #output{
   display: none;
-    font-size: var(--textSize);
+  font-size: var(--textSize);
 }
 
 #phoneRings{
-  display: none;
+  display: none; /*Set to none so that javascript can be used to call it and set it to block*/
 }
 
 #answerPhone{
@@ -167,13 +167,6 @@ animation: bounce 0.7s infinite alternate;
   margin-left: auto;
   margin-right: auto;
   margin-top: 18px;
-}
-
-.link{
-  text-decoration: none; /*Removing the underline on the link that applies to text above the characters*/
-  font-size: var(--textSize);
-  color: White;
-  cursor: pointer;
 }
 
 .buttons{
@@ -415,7 +408,7 @@ animation: bounce 0.7s infinite alternate;
 
 @media screen and (min-width: 650px) {
   #phone {
-    width: 70%; /*Decreasing the width of the image so that it does not become to large on bigger screens */
+    width: 70%; /*Decreasing the width of the image so that it does not become too large on bigger screens */
   }
 }
 
@@ -427,7 +420,7 @@ animation: bounce 0.7s infinite alternate;
 
 @media screen and (min-width: 650px) {
   #video {
-    width: 70%; /*SO that the whole video can be seen on screen, it is decreased in size on larger screens as once a user clikcs play, the video gets slightly bigger in size*/
+    width: 70%; /*So that the whole video can be seen on screen, it is decreased in size on larger screens as once a user clicks play, the video gets slightly bigger in size*/
   }
 }
 
