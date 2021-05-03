@@ -4,14 +4,14 @@ body{/* These CSS rules have been applied to the whole body, for ease of the bas
   --textSize: 18px;
   --textSideMargin: 10px; /*To esnure that the text does not get too close to the edge of the images when scaling the screen from mobile to desktop during the questioning pages, a custom property was set and then used where appropraite*/
   --textTopMargin: 35px;
-  font-family: "Century Gothic";
+  font-family: "Century Gothic", AppleGothic, sans-serif;
   text-align: center;
   margin: 0;
   --pageAccents: #A61818; /*Using a custom property here so that if the colour needs to be changed for any reason, it will only need to be changed here to apply to all of the colourful accents throughout the game, like the buttons or the loader.*/
 }
 
 h1{
-  font-family: "AR BONNIE"; /*The font is in quotation marks as a result of warnings in the CSS validation that suggested they be put in quotes*/
+  font-family: "Century Gothic", AppleGothic, sans-serif; /*The font is in quotation marks as a result of warnings in the CSS validation that suggested they be put in quotes*/
   font-size: 100px;
   text-align: center;
   margin: 0;
@@ -100,7 +100,7 @@ animation: bounce 0.7s infinite alternate;
 #enter{
   width: 50%;
   padding: 12px;
-  font-family: "Century Gothic";
+  font-family: "Century Gothic", AppleGothic, sans-serif;
   color: white;
   font-size: 20px;
   margin: 10px;
@@ -120,7 +120,7 @@ animation: bounce 0.7s infinite alternate;
 #answerPhone{
   width: 50%;
   padding: 12px;
-  font-family: "Century Gothic";
+  font-family: "Century Gothic", AppleGothic, sans-serif;
   color: white;
   font-size: 20px;
   background-color: var(--pageAccents, red);
@@ -233,7 +233,7 @@ animation: bounce 0.7s infinite alternate;
 #shareResult{
   background-color: var(--pageAccents, red);
   color: white;
-  font-family: "Century Gothic"; /*These style rules were applied as the button does not take on the basic body stylying rules*/
+  font-family: "Century Gothic", AppleGothic, sans-serif; /*These style rules were applied as the button does not take on the basic body stylying rules*/
   font-size: var(--textSize);
   padding: 15px;
   cursor: pointer; /* This is so that users on desktop will see their cursor change to the pointer, indicating that the button is clickable*/
@@ -265,7 +265,7 @@ animation: bounce 0.7s infinite alternate;
 .retry{
   background-color: var(--pageAccents, red);
   color: white;
-  font-family: "Century Gothic";
+  font-family: "Century Gothic", AppleGothic, sans-serif;
   font-size: var(--textSize);
   padding: 15px; /*These style rules were applied as the button does not take on the basic body stylying rules*/
   cursor: pointer; /* This is so that users on desktop will see their cursor change to the pointer, indicating that the button is clickable*/
