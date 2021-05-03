@@ -1,4 +1,4 @@
-let selectedPerson = []; /*Empty array to push the player chosen characters into once they have visited their page to ask them a question. This was not the original plan, but due to complications in allowing users to navigate back causing the wrong set of buttons to appear, the game was altered so they can now only ask each character one question*/
+let selectedPerson = []; /*Empty array to push the player's chosen characters into, once they have visited their page to ask them a question. This was not the original plan, but due to complications in allowing users to navigate back causing the wrong set of buttons to appear, the game was altered so they can now only ask each character one question*/
 
 playNarration=()=>{
   let audio = document.getElementById("narration");
@@ -15,9 +15,10 @@ updateAudio=(audiofile)=>{
   let ogg = document.getElementById("ogg");
   let wav = document.getElementById("wav");
   mp3.src="audio/" + audiofile + ".mp3";
-  ogg.src="audio/" + audiofile + ".ogg"; /* + arithmetic operator used to add the audiofile name into the right part of the src code when changing the file*/wav.src="audio/" + audiofile + ".wav";
+  ogg.src="audio/" + audiofile + ".ogg"; /* + arithmetic operator used to add the audiofile name into the right part of the src code when changing the file*/
+  wav.src="audio/" + audiofile + ".wav";
   audio.load();
-/*This code reloads and chages the source of the audio depending on what page the player is on. It gets each of the 2 audio sources, then using audiofile as the parameter to change, updates the audio using a string, with the correct filename placed in each transition function*/
+/*This code reloads and chages the source of the audio depending on what page the player is on. It gets each of the 3 audio sources, then using audiofile as the parameter to change, updates the audio using a string, with the correct filename placed in each transition function*/
 };
 
 /* The code for the typewriter function on page 1 has been directly taken from https://www.w3schools.com/howto/howto_js_typewriter.asp.*/
@@ -35,7 +36,7 @@ typeWriter=()=> {
 
 typeWriter();
 
-/*As the transition code is repetitive anyway, for more efficient coding, created a seperate loader function then placed the corresponding boolean output into each transition function. This slimlined the coding, making it much easier to read ad understand*/
+/*As the transition code is repetitive anyway, for more efficient coding, created a seperate loader function then placed the corresponding boolean output into each transition function. This slimlined the coding, making it much easier to read and understand*/
 
 setLoader=(loaderTop)=>{
   /*This code sets the height and position of the loader div, which is how the transition is created. It uses its previous position and when called in the transition functions below, alternates them appropriately.*/
@@ -68,7 +69,7 @@ let loaderAppear = document.getElementById("loader").style.display = "block"; //
 let loaderHeight = document.getElementById("loader").style.height = "100%";
 let loader = document.getElementById("loader").style.bottom = "100%"; // This code works and is still used, just in a seperate function that is now called instead.
 
-The audio code was added to each transition function to update the audio. To begin with, the code was set as narration.src="audio/NAMEHERE.mp3", but this would of course only update the mp3 audio,so it was changed to the following.However, to make the code streamlined, created a sepereate updateAudio function, then in each transition, simply name the audiofile to play.
+The audio code was added to each transition function to update the audio. To begin with, the code was set as narration.src="audio/NAMEHERE.mp3", but this would of course only update the mp3 audio,so it was changed to the following. However, to make the code streamlined, created a separate updateAudio function, then in each transition, simply named the audiofile to play.
 
       let audio = document.getElementById("narration"); //This is here so that the audio.laod() method below will work
       let mp3 = document.getElementById("mp3");
@@ -76,12 +77,12 @@ The audio code was added to each transition function to update the audio. To beg
       let wav = document.getElementById("wav");
        mp3.src="audio/updateFiles.mp3";
        ogg.src="audio/updateFiles.ogg";
-       wav.src="audio/updateFiles.wav"; // These update each of the audio src's seperately, so that if a user's computer cannot load one of the sources, it can move onto the next one
+       wav.src="audio/updateFiles.wav"; // These update each of the audio src's separately, so that if a user's computer cannot load one of the sources, it can move onto the next one
       audio.load();*/
 
 
 pageDelay=()=>{
-  let page2 = document.getElementById("page2").style.display = "block"; /*This function works with the timeout, so that it knows what code to execute after 1 second. It is used to get the next page of the game, navigating depending on what a player has clicked*/
+  let page2 = document.getElementById("page2").style.display = "block"; /*This function works with the timeout, so that it knows what code to execute after so many seconds. It is used to get the next page of the game, navigating depending on what a player has clicked*/
 };
 
 transition2=()=>{
@@ -93,7 +94,7 @@ transition2=()=>{
 pageDelay2=()=>{
   let page2Phone = document.getElementById("phoneRings").style.display = "block";
   let storyline = document.getElementById("storyline").style.display = "block";
-      /*This pageDelay function was altered to accomodate the page remaining in the same div, but updating the content visible in it. This is also why there is no page set to none in the transition2(), as this will happen in the next one.*/
+/*This pageDelay function was altered to accommodate the page remaining in the same div, but updating the content visible in it. This is also why there is no page set to none in the transition2(), as this will happen in the next one.*/
 };
 
 transitionAnswered=()=>{
@@ -109,7 +110,7 @@ pageDelayAnswered=()=>{
   let page3 = document.getElementById("page3").style.display = "block";
 };
 
-/* Due to the way the transition works, if the user has the option to decline the code transition will break at some point depending on what they pick. For example, if they click to decline the first time, all of the setLoader() can be changed to the opposite of their current state and the game will play. However, if the code was changed to this and the user clicked answer the first time, then the transition to the video page would work, but after that the loader is in the wrong position for the rest of the game. This is because it created an odd number, causing the transitions to stop one way or the other. Therefore, as the user has to answer the phone to play the game, the decline option was removed so that the game would play smoothly. Below is code to show when the decline button was in.
+/* Due to the way the transition works, if the user has the option to decline, the transition will break at some point depending on what they pick. For example, if they click to decline the first time, all of the setLoader() can be changed to the opposite of their current state and the game will play. However, if the code was changed to this and the user clicked answer the first time, then the transition to the video page would work, but after that the loader is in the wrong position for the rest of the game. This is because it created an odd number, causing the transitions to stop one way or the other. Therefore, as the user has to answer the phone to play the game, the decline option was removed so that the game would play smoothly. Below is code to show when the decline button was in.
 
 transitionDeclined=()=>{
   setLoader(true);
@@ -272,7 +273,7 @@ pageDelay12=()=>{
 };
 
 transition4A=()=>{
-/*These are a sub-set of transitions that are not loading entirely new divs, instead they refresh the content within the same div. The reason all of the setLoader() are false is because, they need to all be set to the same position, as the user can select any of the characters to talk to first. Additionally, this act as navigation based on what question the user selects to ask the characters*/
+/*These are a sub-set of transitions that are not loading entirely new divs, instead they refresh the content within the same div. The reason all of the setLoader() are false is because, they need to all be set to the same position, as the user can select any of the characters to talk to first. Additionally, this acts as navigation based on what question the user selects to ask the characters*/
 setLoader(false);
 updateAudio("alistair1");
 questioningAlistair2();
@@ -322,12 +323,12 @@ createAlistairButtons=()=>{
   while(buttonsContainer.hasChildNodes()){
     buttonsContainer.removeChild(buttonsContainer.firstChild);
 }
-/*The above while loop was taken from a first year coding project. The container is called as otherwise the buttons cannot be removed or appended to it. The loop removes the original buttons to make space for 3 new buttons to be created in there place with new options for the players to choose from*/
+/*The above while loop was taken from a first year coding project. The container is called as otherwise the buttons cannot be removed or appended to it. The loop removes the original buttons to make space for 3 new buttons to be created in their place with new options for the players to choose from*/
 
 let newButton1 = document.createElement("button");
 let newButton2 = document.createElement("button");
 let newButton3 = document.createElement("button");
-      /*Here an if statment has been used with the condition set to be if this is not equal to "clarissa/alistair/doctor", then display their respective buttons. However if it is equal to one of the character names, this removes their button and places it in the selectedPerson array, meaning players cannot navigate back to the same character after asking them one question. This was done as if players were able to go back to ask a character their second question, the wrong buttons appeared and the transitions broke.*/
+/*Here an if statement has been used with the condition set to be if this is not equal to "clarissa/alistair/doctor", then display their respective buttons. However if it is equal to one of the character names, this removes their button and places it in the selectedPerson array, meaning players cannot navigate back to the same character after asking them one question. This was done as if players were able to go back to ask a character their second question, the wrong buttons appeared and the transitions broke.*/
 if(!selectedPerson.includes("clarissa")){
   newButton1.className = "buttons";
   newButton1.innerHTML = "Speak to Lady Clarissa Hawthorne";
