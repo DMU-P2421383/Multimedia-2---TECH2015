@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <title>Murder Mystery Story</title>
+  </head>
+<body>
+  <header>
+    <h1> Murder Mystery </h1>
+    <picture>
+    <source media="(max-width: 650px)" srcset="img/bloodM.png" />
+    <img id="blood" src="img/blood.png" alt="red blood droplet"> <!-- Picture tag used as it was recommended by Lighthouse for a better user experience on mobile to increase the image ratio, even though the blood drop remains the same size no matter the screen it is on.-->
+  </picture>
+</header>
+
+<div id="loader"></div>
+
+<div id="page1">
+  <div>
+    <picture> <!-- The picture element has been used throughout the HTML code on the images as appropriate for the gam. This was done to enable to the most appropriate image for the device the user is playing on to load, which will help loading speeds.-->
+      <source media="(max-width: 650px)" srcset="img/hatS.png" />
+      <source media="(max-width: 1000px)" srcset="img/hatM.png" />
+      <img id="hat" src="img/hat.png" alt="red and black chequered detective hat"> <!-- Alt text has been applied to all images to provide descriptions for screen readers to make the game more accessible-->
+    </picture>
+  <p id="welcome"></p>
+</div>
+
+<div class="arrowContainer">
+  <a onclick="transition()">
+    <picture>
+     <source media="(max-width: 650px)" srcset="img/beginS.png" />
+      <source media="(max-width: 1000px)" srcset="img/beginM.png" />
+      <img class="arrow" src="img/begin.png" alt="red arrow with the word 'Begin' in white text">
+  </picture>
+  </a>
+ </div>
+</div>
+
+<div id="page2">
+  <p id="storyline"> You're updating your police file details after a long day of working on case files.</p>
+
+ <form id="form">
+    <!-- Upon validating the html, these 2 lines of code needed to be changed as it brought up the error "The value of the for attribute of the label element must be the ID of a non-hidden form control." Therefore, after googling what this meant, came across the following https://stackoverflow.com/questions/38569235/the-for-attribute-of-the-label-element-must-refer-to-a-non-hidden-form-control/44844597, so updated the code to fix the error as below.
+    <label for="name"> Name:</label>
+    <input class="inputs" type="text" id="username">
+    <label for="eyes"> Eye Colour:</label>
+    <input class="inputs" type="text" id="eyeColour"> -->
+    <label>
+        Name: <input id="username" class="inputs" type="text" name="name">
+    </label>
+    <label>
+        Eye Colour: <input id="eyeColour" class="inputs" type="text" name="eyes">
+    </label>
+
+    <button id="enter" type="button" onclick="userDetails(); transition2()">Enter</button> <!-- onclick is used to run multiple functions at the same time here, so that the users name will display and the transition will take place-->
+  </form>
+
+  <div id="phoneRings">
+    <picture>
+      <source media="(max-width: 650px)" srcset="img/phoneS.jpg" />
+      <source media="(max-width: 1000px)" srcset="img/phoneM.jpg" />
+      <img id="phone" src="img/phone.jpg" alt="holding a mobile phone by a laptop">
+    </picture>
+    <p> Just as you are about to head home for the evening, your phone rings. </p>
+    <button id="answerPhone" type="button" onclick="transitionAnswered()">Answer</button>
+    <!--<button id="declinePhone" type="button" onclick="transitionDeclined()">Decline</button> This was not needed due to the issues it created as detailed in the javascript-->
+  </div> <!-- Placed in a div as it is all related and also makes it easier to hide and show its contents when called-->
+</div>
+
+<div id="page3">
+  <video id="video" controls poster="img/poster.jpg">
+      <source src = "video/backstory.mp4" type = "video/mp4"><!-- Multiple sources used so that if a players browser cannot load one source, it can more onto the next until the video loads-->
+      <source src = "video/backstory.webm" type = "video/webm">
+      <source src = "video/backstory.ogv" type = "video/ogg">
+      <track  label="Captions" kind="captions" srclang="en" src="video/captions.vtt"> <!-- Captions have been used to aid people who have hearing impairements, enabling them to read the video narration as captions instead -->
+      Sorry, your browser does not support the video tag. To download the video, click
+      <a href="video/backstory.mp4">here</a>
+    </video>
+
+  <div class="arrowContainer">
+      <a onclick="transition3()">
+        <picture>
+            <source media="(max-width: 650px)" srcset="img/arrowS.png" />
+            <source media="(max-width: 1000px)" srcset="img/arrowM.png" />
+            <img class="arrow" src="img/arrow.png" alt="red arrow pointing downwards">
+      </picture>
+    </a>
+  </div>
+</div>
+
+<!-- This page was removed in the interest of a smoothly functioning game that still has a strong storyline and navigates correctly.
+
+<div id="page3Declined">
+  <p> You decline, it is after all the end of your day. However, the phone rings again. It must be important. </p>
+  <picture>
+    <source media="(max-width: 650px)" srcset="img/phoneS.jpg" />
+    <source media="(max-width: 1000px)" srcset="img/phoneM.jpg" />
+    <img id="phone" src="img/phone.jpg" alt="holding a mobile phone by a laptop">
+  </picture>
+  <button id="answerPhone" type="button" onclick="transitionMustAnswer()">Answer</button>
+</div>-->
+
+<div id="page4">
+  <p id="characterChoice"></p>
+    <div class="characters"> <!-- The same class has been applied to all three divs indiviudally, so that the media query in the CSS will work cohesively with both the text and the images -->
+      <a onclick="transition4()">
+        <p> Alistair Hawthorne</p>
+        <img  src="img/alistairS.jpg" alt="Young adult Alistair Hawthorne, wearing a suit sat by a window">
+      </a>
+    </div>
+  <div class="characters">
+    <a onclick="transition5()">
+      <p> Lady Clarissa Hawthorne</p>
+      <img src="img/clarissaS.jpg" alt="Clarissa Hawthorne wearing a decorated dress with long gold earrings and a headpiece">
+    </a>
+  </div>
+  <div class="characters">
+    <a onclick="transition6()"> <!-- Each transition acts as a navigational tool because the entire game is on one HTML page-->
+      <p> Dr. William Medicus</p>
+      <!-- The character images here have not had the picture tag added, as the all need to be the same height and width, but with the doctors original image being significantly smaller than Alistair and Clarissa, it was decided that the best option was to leave the smaller Clarissa and Alistair file size images on the desktop version of the site here too. However, the medium doctor image was placed as this matches the small image size of the other two characters-->
+      <img src="img/doctorM.jpg" alt="Doctor Medicus holding a cocktail glass wearing a purple shirt, green party hat and beads">
+    </a>
+  </div>
+</div>
+
+<div id="page5">
+  <div id="questioningAlistair">
+    <p id="dialogueA1"></p>
+    <picture> <!-- As the character images here are displayed seperately to each other, the picture tag has been applied for this section of the game-->
+      <source media="(max-width: 1000px)" srcset="img/alistairS.jpg" />
+      <img class="charactersQuestioning" src="img/alistairM.jpg" alt="Young adult Alistair Hawthorne, wearing a suit sat by a window">
+    </picture>
+    <p id="dialogueA2"></p>
+    <div id="buttonsContainer"> <!-- Two buttons are created for when the page loads, but these are then removed once the user selects which question they would like to ask the character-->
+      <button class="buttons" id="AQ1" type="button" onclick="transition4A()">How was your relationship with your Father?</button>
+      <button class="buttons" id="AQ2" type="button" onclick="transition4B()">What is your favourite subject at school?</button>
+    </div>
+  </div>
+</div>
+
+<div id="page6">
+  <div id="questioningClarissa">
+    <p id="dialogueC1"></p>
+    <picture>
+      <source media="(max-width: 650px)" srcset="img/clarissaS.jpg" />
+      <img class="charactersQuestioning" src="img/clarissaM.jpg" alt="Clarissa Hawthorne wearing a decorated dress with long gold earrings and a headpiece">
+    </picture>
+    <p id="dialogueC2"></p>
+
+    <div id="buttonsContainer1">
+      <button class="buttons" id="CQ1" type="button" onclick="transition5A()">How long have you and Lord Hawthorne been married?</button>
+      <button class="buttons" id="CQ2" type="button" onclick="transition5B()">Did Lord Hawthorne ever buy you any jewellery?</button>
+    </div>
+  </div>
+</div>
+
+<div id="page7">
+  <div id="questioningDoctor">
+    <p id="dialogueD1"></p>
+    <picture>
+      <source media="(max-width: 1000px)" srcset="img/doctorM.jpg" />
+      <img class="charactersQuestioning" src="img/doctor.jpg" alt="Doctor Medicus holding a cocktail glass wearing a purple shirt, green party hat and beads">
+    </picture>
+    <p id="dialogueD2"></p>
+
+    <div id="buttonsContainer2"> <!-- The id of the buttonsContainer is updated for each character, as the text and navigation on two of the buttons per character page update and go to different pages-->
+      <button class="buttons" id="DQ1" type="button" onclick="transition6A()">Did Lord Hawthorne have any health conditions?</button>
+      <button class="buttons" id="DQ2" type="button" onclick="transition6B()">Had you given Lord Hawthorne any medications recently?</button>
+    </div>
+  </div>
+</div>
+
+<div id="page8">
+  <p> You gather everyone back in the living room, ready to expose the murderer.</p>
+  <p> Think carefully about the information you have learned. Who do you think killed Lord Roland Hawthorne?</p>
+
+  <div class="characters">
+    <p> Alistair Hawthorne</p>
+    <a onclick="transition8()">
+      <img src="img/alistairS.jpg" alt="Young adult Alistair Hawthorne, wearing a suit sat by a window">
+    </a>
+  </div>
+  <div class="characters">
+    <p> Lady Clarissa Hawthorne</p>
+    <a onclick="transition9()">
+      <img src="img/clarissaS.jpg" alt="Clarissa Hawthorne wearing a decorated dress with long gold earrings and a headpiece">
+    </a>
+  </div>
+  <div class="characters">
+    <p> Dr. William Medicus</p>
+    <a onclick="transition10()">
+      <img src="img/doctorM.jpg" alt="Doctor Medicus holding a cocktail glass wearing a purple shirt, green party hat and beads">
+    </a>
+  </div>
+</div>
+
+<div id="page9">
+  <div>
+    <p>“Alright fine, I admit it. I killed him. He never paid attention to me anymore, he sent me off to boarding school so he didn't have to deal with me! Yes, I did try to pin the blame on Clarissa by putting her bracelet pendant in the room… but only because its her fault that me and Father grew apart!” </p>
+    <picture>
+      <source media="(max-width: 650px)" srcset="img/alistairS.jpg" />
+      <img class="charactersQuestioning" src="img/alistairM.jpg" alt="Young adult Alistair Hawthorne, wearing a suit sat by a window">
+    </picture>
+    <p id="correct"> Your suspicions were right. Alistair Hawthorne did indeed kill his father. </p>
+    <p id="goodJob"></p> <!-- No text is in this element in the HTML, as javascript is used to update its text content so that the players name can also be added-->
+  </div>
+
+  <button id="shareResult" onclick="transition11()">Share the Mystery</button>
+</div>
+
+<div id="page10">
+  <div>
+    <p> OH NO. Lady Hawthorne was not the killer! Your suspicions were incorrect. Maybe it's time to brush up on your investigation skills. </p>
+    <picture>
+      <source media="(max-width: 650px)" srcset="img/questionMarkS.jpg" />
+      <source media="(max-width: 1000px)" srcset="img/questionMarkM.jpg" />
+      <img class="wrongChoice" src="img/questionMark.jpg" alt="White chalk question mark on a black background">
+    </picture>
+      <p class="incorrect"> The murderer got away this time, but will you be able to catch them next time? </p>
+    </div>
+
+    <button class="retry" onclick="transition12()"> Try Again? </button> <!-- This button takes the players back to the start of the game, reloading the page as it does so-->
+</div>
+
+<div id="page11">
+  <div>
+    <p> OH NO. Doctor William Medicus was not the killer! Your suspicions were incorrect. Maybe it's time to brush up on your investigation skills. </p>
+    <picture>
+      <source media="(max-width: 650px)" srcset="img/questionMarkS.jpg" />
+      <source media="(max-width: 1000px)" srcset="img/questionMarkM.jpg" />
+      <img class="wrongChoice" src="img/questionMark.jpg" alt="White chalk question mark on a black background">
+    </picture>
+    <p class="incorrect"> The murderer got away this time, but will you be able to catch them next time? </p>
+  </div>
+
+  <button class="retry" onclick="transition12()"> Try Again? </button>
+</div>
+
+<div id="page12">
+  <div>
+    <a href="https://en-gb.facebook.com/"> <!-- href's used to navigate players to different websites depending on which social media icon they click-->
+      <picture>
+        <source media="(max-width: 650px)" srcset="img/facebookS.png" />
+        <source media="(max-width: 1000px)" srcset="img/facebookM.png" />
+        <img class="socials" src="img/facebook.png" alt="Round blue Facebook logo">
+      </picture>
+    </a>
+    <a href="https://twitter.com/">
+      <picture>
+        <source media="(max-width: 650px)" srcset="img/twitterS.png" />
+        <source media="(max-width: 1000px)" srcset="img/twitterM.png" />
+        <img class="socials" src="img/twitter.png" alt="Round blue Twitter logo">
+      </picture>
+    </a>
+    <a href="https://www.whatsapp.com/">
+      <picture>
+        <source media="(max-width: 650px)" srcset="img/whatsappS.png" />
+        <source media="(max-width: 1000px)" srcset="img/whatsappM.png" />
+        <img class="socials" src="img/whatsapp.png" alt="Round green WhatsApp logo">
+      </picture>
+    </a>
+  </div>
+</div>
+
+ <!-- Even though there are multiple divs acting as multiple pages, there is only one footer that has been deliberalty left seperate from each div. This is because, each page does not need the footer as it can be activated or disabled using javascript when required for narration-->
+ <footer id="gameAudio">
+  <picture>
+  <source media="(max-width: 650px)" srcset="img/soundS.png" />
+  <source media="(max-width: 1000px)" srcset="img/soundM.png" />
+  <img id="speaker" src="img/sound.png" alt="White speaker icon" onclick="playNarration()"> <!--onclick used here to work in conjunction with the playNarration function in the script-->
+</picture>
+  <audio id="narration">
+    <source id="mp3" src="audio/homepage.mp3" type="audio/mpeg">
+    <source id="ogg" src="audio/homepage.ogg" type="audio/ogg">
+    <source id="wav" src="audio/homepage.wav" type="audio/wav">
+    Sorry, your browser does not support the audio element.
+  </audio>
+</footer>
+
+
+
+<script src="js/murdermystery.js">/* JavaSript placed in seperate file to avoid possibility of players being able to figure out the murderer*/
+</script>
