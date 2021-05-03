@@ -397,7 +397,7 @@ animation: bounce 0.7s infinite alternate;
 
 @media screen and (min-width: 1000px) {
   #blood {
-    left:48.5%; /*This repositions the blood to a more central position in relation to the title when on a desktop */
+    left: 47.8%; /*This repositions the blood to a more central position in relation to the title when on a desktop */
   }
 }
 
